@@ -160,8 +160,8 @@
           <div class="lg:order-1 relative mx-auto lg:mx-0 max-w-md lg:max-w-none w-full">
             <div class="rounded-3xl overflow-hidden shadow-xl">
               <img
-                src="/images/ancient-ruins.webp" 
-                alt="Dr. Rebecca Johnson"
+                src="/images/HenahMiss.jpeg" 
+                alt="Ms.Henah"
                 class="w-full h-full object-cover aspect-[4/3]"
               />
             </div>

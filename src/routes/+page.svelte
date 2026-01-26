@@ -218,10 +218,10 @@
               桜
             </div>
             <span class="text-white/80 w-36 md:w-56 text-2xl hero-text"
-              >For the needy Students.</span
+              >Mental Health, accessible for everyone..</span
             >
           </div>
-          <a href="#">
+          <a href="/aboutus">
             <button
               class="px-8 py-3 bg-[#DBC594] rounded-full text-sm transition-colors hover:bg-[#C4B084] hero-text text-[#1E2012] font-semibold"
             >
