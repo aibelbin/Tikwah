@@ -48,7 +48,7 @@
             About Tikwah
           </h1>
           <p class="text-white/80 text-lg lg:text-xl max-w-2xl mx-auto">
-            Our mission is to make therapy accessible, straightforward, and effective for students
+            Our mission is to make therapy accessible, straightforward, and effective for everyone, Irrespective of age or gender.
           </p>
         </div>
       </div>
@@ -91,16 +91,16 @@
             </h2>
             <p class="text-gray-700 dark:text-gray-300 text-lg">
               Tikwah was founded with a simple belief: mental healthcare should be accessible, 
-              approachable, and tailored to each student's unique journey. 
+              approachable, and tailored to each individual's unique journey. 
             </p>
             <p class="text-gray-700 dark:text-gray-300">
               The name "Tikwah" (تيكفا) means "hope" in Hebrew, reflecting our commitment 
-              to offering a beacon of hope and support for students seeking mental wellness.
+              to offering a beacon of hope and support for everyone seeking mental wellness.
             </p>
             <p class="text-gray-700 dark:text-gray-300">
               We've built our platform with care and attention to create a space where 
-              students can connect with qualified therapists in an environment that feels 
-              safe, comfortable, and conducive to growth and healing.
+              anyone can connect with our qualified therapist without having to worry about their backgrounds, 
+              privacy by connecting from the comfort of their home.
             </p>
           </div>
           <div class="relative h-80 lg:h-96">
@@ -135,26 +135,26 @@
         >
           <div class="lg:order-2 space-y-6">
             <h3 class="text-2xl lg:text-3xl font-['SF_UI_Display_Medium'] text-gray-900 dark:text-white">
-              Dr. Rebecca Johnson
+             Ms. Henah
             </h3>
             <p class="text-[#DBC594] font-['SF_UI_Display_Medium']">
-              PhD, Clinical Psychology, 20+ Years Experience
+             Psychologist, 10+ Years Experience
             </p>
             <p class="text-gray-700 dark:text-gray-300">
-              With over two decades of dedicated experience, my aunt Dr. Johnson has transformed 
-              the lives of hundreds of students struggling with anxiety, depression, academic stress,
+              With over two decades of dedicated experience, Ms Henah has transformed 
+              the lives of hundreds of individuals struggling with anxiety, depression, academic stress,
               and personal challenges.
             </p>
             <p class="text-gray-700 dark:text-gray-300">
-              After working in university counseling centers for 15 years, she recognized the need 
-              for more personalized care for students. Her approach combines evidence-based techniques
-              with genuine warmth and understanding - creating a unique therapeutic experience that students
+              After working in various university counseling centers for 10 years, she recognized the need 
+              for more personalized care for every age group. Her approach combines evidence-based techniques
+              with genuine warmth and understanding - creating a unique therapeutic experience that people who contact her
               consistently describe as "life-changing."
             </p>
             <p class="text-gray-700 dark:text-gray-300 italic">
-              "I believe every student deserves a safe space to be heard. Academic life brings unique 
-              pressures, and I'm dedicated to helping students not just survive, but thrive during these 
-              formative years."
+              "I believe everybody  deserves a safe space to be heard. Life brings unique 
+              pressures, and I'm dedicated to helping everyone not just survive, but thrive during their
+              lifetime."
             </p>
           </div>
           <div class="lg:order-1 relative mx-auto lg:mx-0 max-w-md lg:max-w-none w-full">
@@ -168,7 +168,7 @@
             <div class="absolute -bottom-4 -left-4 p-4 bg-white dark:bg-[#0E0E0C] rounded-xl shadow-lg hidden sm:block">
               <div class="flex flex-col items-center justify-center">
                 <span class="text-sm text-gray-500 dark:text-gray-400">Specializes in</span>
-                <span class="text-lg font-bold text-gray-900 dark:text-white">Student Counseling</span>
+                <span class="text-lg font-bold text-gray-900 dark:text-white">Counseling</span>
               </div>
             </div>
           </div>
@@ -181,10 +181,10 @@
       <div class="max-w-6xl mx-auto px-4 md:px-6 lg:px-8">
         <div class="text-center mb-12" in:fly={{ y: 20, duration: 800, delay: 500 }}>
           <h2 class="text-3xl lg:text-4xl font-['SF_UI_Display_Medium'] text-gray-900 dark:text-white">
-            Dr. Johnson's Approach
+           Ms. Henah
           </h2>
           <p class="mt-4 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            A holistic, student-centered approach tailored to academic life
+            A holistic, sympathy-centered approach tailored to individual's life
           </p>
         </div>
 
@@ -194,11 +194,10 @@
               <span class="text-2xl text-[#DBC594]">1</span>
             </div>
             <h3 class="text-xl font-['SF_UI_Display_Medium'] text-gray-900 dark:text-white mb-3">
-              Academic Integration
+             Holistic Well-Being
             </h3>
             <p class="text-gray-700 dark:text-gray-300">
-              Dr. Johnson understands how academic pressures uniquely impact mental health
-              and tailors therapy to help you balance educational demands with self-care.
+             Support that considers emotional, mental, and lifestyle factors, helping individuals build balance, resilience, and self-understanding in everyday life.
             </p>
           </div>
           
@@ -207,11 +206,10 @@
               <span class="text-2xl text-[#DBC594]">2</span>
             </div>
             <h3 class="text-xl font-['SF_UI_Display_Medium'] text-gray-900 dark:text-white mb-3">
-              Practical Strategies
+              Practical Coping Tools
             </h3>
             <p class="text-gray-700 dark:text-gray-300">
-              Beyond traditional talk therapy, Dr. Johnson provides concrete tools you can 
-              immediately apply to your coursework, social life, and future planning.
+              Therapy that goes beyond conversation—offering actionable strategies that can be applied to work, relationships, personal challenges, and long-term growth.
             </p>
           </div>
           
@@ -220,11 +218,10 @@
               <span class="text-2xl text-[#DBC594]">3</span>
             </div>
             <h3 class="text-xl font-['SF_UI_Display_Medium'] text-gray-900 dark:text-white mb-3">
-              Flexible Support
+             Flexible & Inclusive Care
             </h3>
             <p class="text-gray-700 dark:text-gray-300">
-              Understanding student schedules, Dr. Johnson offers appointments that accommodate
-              academic calendars, including after-hours sessions during exam periods.
+              Sessions designed to respect diverse schedules, life stages, identities, and needs—creating a safe, welcoming space for everyone.
             </p>
           </div>
         </div>
@@ -238,8 +235,7 @@
           Ready to Start Your Journey?
         </h2>
         <p class="text-gray-700 dark:text-gray-300 mb-10 max-w-2xl mx-auto">
-          Take the first step toward wellness and schedule your session with Dr. Johnson today. 
-          We're here to support your academic and personal growth every step of the way.
+          Take the first step toward clarity, emotional well-being, and personal growth. Support is available for individuals of all ages, backgrounds, and life paths.
         </p>
         <a href="/signup" 
           class="px-8 py-3 bg-[#DBC594] rounded-full text-sm transition-colors hover:bg-[#C4B084] hero-text text-[#1E2012] font-semibold inline-block"
