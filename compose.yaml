@@ -61,6 +61,39 @@ services:
         max-size: "10m"
         max-file: "3"
 
+  # Free Cloudflare quick tunnel: a public, CDN-backed URL with no domain and
+  # no account. Tailscale Funnel proved unusable here, serving ~16 KB/s and
+  # returning nothing at all under the parallel requests a browser makes.
+  #
+  # It joins the tailscale container's namespace because `web` has no network
+  # of its own and is only reachable there as 127.0.0.1:8080.
+  #
+  # The hostname is randomly assigned and CHANGES whenever this container
+  # restarts. Read the current one with:
+  #   docker logs tikwah-cloudflared 2>&1 | grep -o 'https://.*trycloudflare.com'
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: tikwah-cloudflared
+    restart: unless-stopped
+    depends_on:
+      - web
+    network_mode: service:tailscale
+    command: tunnel --no-autoupdate --url http://127.0.0.1:8080
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    cpus: 0.5
+    mem_limit: 256m
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
 volumes:
   # Persists the node identity so restarts rejoin as "tikwah", not "tikwah-1".
   ts-state:
