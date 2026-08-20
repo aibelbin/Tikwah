@@ -35,28 +35,35 @@
     grid: "/images/grid1.webp",
   };
 
-  const preloadImages = async () => {
-    const imagePromises = [
-      ...assets.artworks.map(
-        (art) =>
+  // Reports a 0..1 fraction as each image settles, so the counter on screen
+  // tracks real download progress instead of starting to move only once every
+  // byte has arrived.
+  const preloadImages = (onProgress: (fraction: number) => void) => {
+    const urls = [
+      ...assets.artworks.map((art) => art.url),
+      assets.hero,
+      assets.lines,
+    ];
+
+    let settled = 0;
+    return Promise.all(
+      urls.map(
+        (url) =>
           new Promise<void>((resolve) => {
             const img = new Image();
-            img.src = art.url;
-            img.onload = () => resolve();
+            // An error has to settle the promise too. Resolving only on load
+            // means one missing or stalled image hangs the screen forever.
+            const settle = () => {
+              settled += 1;
+              onProgress(settled / urls.length);
+              resolve();
+            };
+            img.onload = settle;
+            img.onerror = settle;
+            img.src = url;
           })
-      ),
-      new Promise<void>((resolve) => {
-        const img = new Image();
-        img.src = assets.hero;
-        img.onload = () => resolve();
-      }),
-      new Promise<void>((resolve) => {
-        const img = new Image();
-        img.src = assets.lines;
-        img.onload = () => resolve();
-      }),
-    ];
-    await Promise.all(imagePromises);
+      )
+    );
   };
 
   const transitionToNextImage = () => {
@@ -71,51 +78,51 @@
     }
   };
 
-  let mounted: () => void;
+  // Long enough that the intro does not flash past on a fast connection.
+  const MIN_VISIBLE_MS = 600;
+  // Hard ceiling: a slow or dead asset must never hold the page hostage.
+  const MAX_VISIBLE_MS = 6000;
 
   onMount(() => {
-    const setup = async () => {
-      await preloadImages();
+    const startedAt = Date.now();
+    let revealed = false;
 
-      const progressInterval = setInterval(() => {
-        if (state.progress < 100) {
-          state.progress = Math.min(
-            100,
-            state.progress +
-              Math.max(1, Math.floor((100 - state.progress) / 10))
-          );
-        } else {
-          clearInterval(progressInterval);
-          state.progressComplete = true;
-
-          setTimeout(() => {
-            state.loading = false;
-            setTimeout(() => (state.contentLoaded = true), 200);
-          }, 1000);
-        }
-      }, 50);
-
-      const artInterval = setInterval(() => {
-        if (state.loading) {
-          transitionToNextImage();
-        }
-      }, 900);
-
-      const handleScroll = () => {
-        state.scrollY = window.scrollY;
-      };
-
-      window.addEventListener("scroll", handleScroll);
-
-      mounted = () => {
-        clearInterval(progressInterval);
-        clearInterval(artInterval);
-        window.removeEventListener("scroll", handleScroll);
-      };
+    const reveal = () => {
+      if (revealed) return;
+      revealed = true;
+      state.progress = 100;
+      state.progressComplete = true;
+      state.loading = false;
+      setTimeout(() => (state.contentLoaded = true), 200);
     };
 
-    setup();
-    return () => mounted?.();
+    const bailout = setTimeout(reveal, MAX_VISIBLE_MS);
+
+    preloadImages((fraction) => {
+      state.progress = Math.max(state.progress, Math.round(fraction * 100));
+    }).then(() => {
+      clearTimeout(bailout);
+      setTimeout(reveal, Math.max(0, MIN_VISIBLE_MS - (Date.now() - startedAt)));
+    });
+
+    const artInterval = setInterval(() => {
+      if (state.loading) {
+        transitionToNextImage();
+      }
+    }, 900);
+
+    const handleScroll = () => {
+      state.scrollY = window.scrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Registered synchronously, so unmounting mid-preload still tears down.
+    return () => {
+      clearTimeout(bailout);
+      clearInterval(artInterval);
+      window.removeEventListener("scroll", handleScroll);
+    };
   });
 </script>
 
