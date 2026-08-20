@@ -1,3 +1,8 @@
+.git/
 node_modules/
 .svelte-kit/
+build/
+.env
+.env.*
+.vscode/
 vite.config.ts.timestamp*

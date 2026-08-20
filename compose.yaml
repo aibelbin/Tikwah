@@ -1,0 +1,66 @@
+name: tikwah
+
+services:
+  # Joins the tailnet as its own node, so this site gets its own Funnel 443
+  # slot instead of competing for fox's already-allocated ones.
+  tailscale:
+    image: tailscale/tailscale:stable
+    container_name: tikwah-tailscale
+    hostname: tikwah
+    restart: unless-stopped
+    environment:
+      TS_AUTHKEY: ${TS_AUTHKEY:?TS_AUTHKEY is not set - create .env with an auth key}
+      TS_HOSTNAME: tikwah
+      TS_STATE_DIR: /var/lib/tailscale
+      # Userspace networking: this node only serves, it never routes or exits,
+      # so it needs neither NET_ADMIN nor a TUN device.
+      TS_USERSPACE: "true"
+      TS_SERVE_CONFIG: /config/serve.json
+    volumes:
+      - ts-state:/var/lib/tailscale
+      - ./ts-serve.json:/config/serve.json:ro
+    security_opt:
+      - no-new-privileges:true
+    cpus: 0.5
+    mem_limit: 256m
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  web:
+    build: .
+    image: tikwah-web:latest
+    container_name: tikwah-web
+    restart: unless-stopped
+    depends_on:
+      - tailscale
+    # No network of its own: it lives inside the tailscale container's
+    # namespace, reachable only as 127.0.0.1:8080 from that node.
+    network_mode: service:tailscale
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /var/cache/nginx
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    cpus: 0.5
+    mem_limit: 128m
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "-", "http://127.0.0.1:8080/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  # Persists the node identity so restarts rejoin as "tikwah", not "tikwah-1".
+  ts-state:
