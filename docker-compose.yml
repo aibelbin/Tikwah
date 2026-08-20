@@ -1,7 +1,0 @@
-name: sakura
-
-services:
-  web:
-    build: .
-    ports:
-      - 80:4173

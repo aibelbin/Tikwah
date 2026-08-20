@@ -135,13 +135,13 @@
         >
           <div class="lg:order-2 space-y-6">
             <h3 class="text-2xl lg:text-3xl font-['SF_UI_Display_Medium'] text-gray-900 dark:text-white">
-             Ms. Henah
+             Ms. Prabha K Baby
             </h3>
             <p class="text-[#DBC594] font-['SF_UI_Display_Medium']">
              Psychologist, 10+ Years Experience
             </p>
             <p class="text-gray-700 dark:text-gray-300">
-              With over two decades of dedicated experience, Ms Henah has transformed 
+              With over two decades of dedicated experience, She has transformed 
               the lives of hundreds of individuals struggling with anxiety, depression, academic stress,
               and personal challenges.
             </p>
@@ -160,8 +160,8 @@
           <div class="lg:order-1 relative mx-auto lg:mx-0 max-w-md lg:max-w-none w-full">
             <div class="rounded-3xl overflow-hidden shadow-xl">
               <img
-                src="/images/HenahMiss.jpeg" 
-                alt="Ms.Henah"
+                src="/images/statues.jpg"
+                alt="Ms.Prabha"
                 class="w-full h-full object-cover aspect-[4/3]"
               />
             </div>
@@ -181,7 +181,7 @@
       <div class="max-w-6xl mx-auto px-4 md:px-6 lg:px-8">
         <div class="text-center mb-12" in:fly={{ y: 20, duration: 800, delay: 500 }}>
           <h2 class="text-3xl lg:text-4xl font-['SF_UI_Display_Medium'] text-gray-900 dark:text-white">
-           Ms. Henah
+            Prabha K Baby
           </h2>
           <p class="mt-4 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             A holistic, sympathy-centered approach tailored to individual's life
